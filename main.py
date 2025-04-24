@@ -12,3 +12,9 @@ if __name__ == "__main__":
     first = compute_first(grammar)
     for symbol, first_set in first.items():
         print(f"Primero({symbol}) = {first_set}")
+
+    print("\nConjuntos FOLLOW:")
+    start_symbol = list(grammar.keys())[0]
+    follow = compute_follow(grammar, start_symbol, first)
+    for symbol, follow_set in follow.items():
+        print(f"Siguiente({symbol}) = {follow_set}")
