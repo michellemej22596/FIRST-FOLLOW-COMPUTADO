@@ -8,4 +8,7 @@ if __name__ == "__main__":
     for non_terminal, productions in grammar.items():
         print(f"{non_terminal} → {productions}")
 
-    # llamadas a compute_first y compute_follow
+    print("\nConjuntos FIRST:")
+    first = compute_first(grammar)
+    for symbol, first_set in first.items():
+        print(f"Primero({symbol}) = {first_set}")

@@ -7,6 +7,15 @@ def load_grammar(file_path):
                 continue
             left, right = line.split("→")
             left = left.strip()
-            productions = [prod.strip().split() for prod in right.strip().split('|')]
+            productions_raw = right.strip().split('|')
+
+            productions = []
+            for prod in productions_raw:
+                symbols = prod.strip().split()
+                if symbols == ['ε'] or symbols == ['epsilon']:
+                    productions.append(['ε'])  # usamos 'ε' como símbolo especial
+                else:
+                    productions.append(symbols)
+
             grammar.setdefault(left, []).extend(productions)
     return grammar
